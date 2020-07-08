@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="width=800px, initial-scale=1.0"> -->
+    <title>Digital Clock</title>
+    <link rel="stylesheet" href="style.css" </head>
+
+<body class="light">
+    <div class="toggle" onclick="toggleBody()"></div>
+    <div class="clock">
+        <div class="hour" id="hr"></div>
+        <div class="minute" id="min"></div>
+        <div class="second" id="sec"></div>
+    </div>
+    <script type="text/javascript">
+
+        function toggleBody() {
+            const body = document.querySelector("body");
+            body.classList.toggle('light')
+        };
+
+        const deg = 6;
+        // const mode=light;
+        const hr = document.querySelector("#hr");
+        const min = document.querySelector('#min');
+        const sec = document.querySelector('#sec');
+
+        setInterval(() => {
+            let day = new Date();
+            let hh = day.getHours() * 30;
+            let mm = day.getMinutes() * deg;
+            let ss = day.getSeconds() * deg;
+
+            hr.style.transform = `rotateZ(${(hh) + (mm / 12)}deg)`;
+            min.style.transform = `rotateZ(${(mm)}deg)`;
+            sec.style.transform = `rotateZ(${(ss)}deg)`;
+        });
+    </script>
+</body>
+
+</html>

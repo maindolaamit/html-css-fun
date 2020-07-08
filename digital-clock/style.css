@@ -1,0 +1,149 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    background-color: #091921;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-repeat: no-repeat;
+}
+
+body.light {
+    background-color: #7499dd;
+}
+
+.clock .hour,
+.clock .minute,
+.clock .second {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    border-radius: 50%;
+}
+
+.clock {
+    width: 400px;
+    height: 400px;
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    background: #091921 url(clock.png);
+    background-size: cover;
+    border: 4px solid #091921;
+    border-radius: 50%;
+    box-shadow: -8px -8px 15px rgba(255, 255, 255, 0.05),
+        20px 20px 20px rgba(0, 0, 0, 0.3),
+        inset -8px -8px 15px rgba(255, 255, 255, 0.05),
+        inset 20px 20px 20px rgba(0, 0, 0, 0.3);
+}
+
+body.light .clock {
+    background-color: #d1dae3;
+    border: 4px solid #cad3dc;
+    background-size: cover;
+    box-shadow: -8px -8px 15px rgba(255, 255, 255, 0.5),
+        10px 10px 10px rgba(0, 0, 0, 0.1),
+        inset -8px -8px 15px rgba(255, 255, 255, 0.5),
+        inset 10px 10px 10px rgba(0, 0, 0, 0.1);
+}
+
+.clock::before {
+    content: '';
+    /* background: #ffffff; */
+    background: #848484;
+    /* background: purple; */
+    position: absolute;
+    height: 10px;
+    width: 10px;
+    z-index: 100;
+}
+
+body.light .clock::before {
+    background-color: #008eff;
+}
+
+.clock .hour {
+    height: 160px;
+    width: 160px;
+}
+
+.hour::before {
+    content: '';
+    /* background-color: #ff105e; */
+    background-color: #ff105e;
+    height: 80px;
+    width: 8px;
+    border-radius: 5px 5px 0 0;
+    z-index: 10;
+}
+
+.clock .minute {
+    height: 190px;
+    width: 190px;
+}
+
+.minute::before {
+    content: '';
+    background: #ffffff;
+    height: 100px;
+    width: 4px;
+    border-radius: 5px 5px 0 0;
+    z-index: 11;
+}
+
+body.light .minute::before{
+    background: #091921;
+}
+
+.clock .second {
+    height: 230px;
+    width: 230px;
+}
+
+.second::before {
+    content: '';
+    /* position: absolute; */
+    background-color: #008eff;
+    height: 140px;
+    width: 3px;
+    border-radius: 5px 5px 0 0;
+    z-index: 12;
+}
+
+.toggle {
+    position: absolute;
+    top: 30px;
+    right: 150px;
+    height: 20px;
+    width: 20px;
+    font-size: medium;
+    border-radius: 50%;
+    background-color: #d1dae3;
+    color: #d1dae3;
+    font-family: consolas;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.toggle::before {
+    position: absolute;
+    content: 'Dark Mode';
+    white-space: nowrap;
+    left:25px
+}
+
+body.light .toggle{
+    background-color: #091921;
+    color: #091921;
+}
+
+body.light .toggle::before {
+    content: 'Light Mode';
+}
