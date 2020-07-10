@@ -4,7 +4,7 @@ My experiments in learning of HTML, CSS and JavaScript by imitating some of the 
 
 | S.No | Item          | Description                                                  |
 | ---- | ------------- | ------------------------------------------------------------ |
-| 1    | Digital Clock | Created a digital clock using CSS with Dark and Light theme. |
+| 1    | Digital Clock | Created a digital clock using CSS ; Dark and Light theme toggle button. Clock ticking sound toggle button. |
 | 2    | Flying Rocket | Created a Flying rocket animation in CSS                     |
 |      |               |                                                              |
 

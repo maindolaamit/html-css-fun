@@ -8,7 +8,9 @@
     <link rel="stylesheet" href="style.css" </head>
 
 <body class="light">
+    <!-- <audio id="clock-tick" src="clock-ticking.mp3" preload="auto"></audio> -->
     <div class="toggle" onclick="toggleBody()"></div>
+    <div class="toggleAudio" id="clockSound"></div>
     <div class="clock">
         <div class="hour" id="hr"></div>
         <div class="minute" id="min"></div>
@@ -20,6 +22,26 @@
             const body = document.querySelector("body");
             body.classList.toggle('light')
         };
+
+        var playSound = false;
+        const tickSound = new Audio("clock-ticking-1.mp3");
+        const clockSound = document.querySelector("#clockSound");
+        clockSound.setAttribute('sound-status', "Sound Off");
+        clockSound.addEventListener('click',
+            function (event) {
+                if (playSound === false) {
+                    console.log("playing sound");
+                    playSound = true;
+                    clockSound.setAttribute('sound-status', "Sound On");
+                    // sound.play();
+                } else {
+                    playSound = false;
+                    tickSound.pause();
+                    tickSound.currentTime = 0;
+                    clockSound.setAttribute('sound-status', "Sound Off");
+                    console.log("stopping sound.");
+                }
+            });
 
         const deg = 6;
         // const mode=light;
@@ -36,6 +58,10 @@
             hr.style.transform = `rotateZ(${(hh) + (mm / 12)}deg)`;
             min.style.transform = `rotateZ(${(mm)}deg)`;
             sec.style.transform = `rotateZ(${(ss)}deg)`;
+            if (playSound) {
+                // tickSound.currentTime = 0;
+                tickSound.play();
+            }
         });
     </script>
 </body>
