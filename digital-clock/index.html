@@ -16,6 +16,7 @@
         <div class="minute" id="min"></div>
         <div class="second" id="sec"></div>
     </div>
+    <div class="clockTime" id="clockTime">Hello</div>
     <script type="text/javascript">
 
         function toggleBody() {
@@ -43,6 +44,7 @@
                 }
             });
 
+        const clockTime = document.querySelector("#clockTime");
         const deg = 6;
         // const mode=light;
         const hr = document.querySelector("#hr");
@@ -58,10 +60,20 @@
             hr.style.transform = `rotateZ(${(hh) + (mm / 12)}deg)`;
             min.style.transform = `rotateZ(${(mm)}deg)`;
             sec.style.transform = `rotateZ(${(ss)}deg)`;
+            // Play sound on click
             if (playSound) {
                 // tickSound.currentTime = 0;
                 tickSound.play();
             }
+            // Display clock time
+            var time;
+            if (parseInt(day.getHours()) > 12) {
+                time = `${parseInt(day.getHours())-12} : ${day.getMinutes()} : ${day.getSeconds()} PM`;
+            } else {
+                time = `${day.getHours()} : ${day.getMinutes()} : ${day.getSeconds()} AM`;
+            }
+
+            clockTime.innerHTML = time;
         });
     </script>
 </body>

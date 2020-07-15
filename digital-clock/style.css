@@ -29,7 +29,6 @@ body.light {
     width: 400px;
     height: 400px;
     display: flex;
-    position: absolute;
     justify-content: center;
     align-items: center;
     background: #091921 url(clock.png);
@@ -56,7 +55,6 @@ body.light .clock {
     content: '';
     background: #848484;
     border-radius: 50%;
-    position: absolute;
     height: 15px;
     width: 15px;
     z-index: 100;
@@ -171,4 +169,15 @@ body.light .toggle::before {
 body.light .toggleAudio{
     background-color: #091921;
     color: #091921;
+}
+
+.clockTime{
+    font-size: 4em;
+    position: absolute;
+    bottom: 80px;
+    color: #61c071;
+}
+
+body.light .clockTime{
+    color: #13286d;
 }
