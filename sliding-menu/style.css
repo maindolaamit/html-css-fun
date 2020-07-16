@@ -5,7 +5,7 @@
     font-family: consolas;
 }
 
-body{
+body {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -17,20 +17,35 @@ nav {
     display: flex;
 }
 
-nav a{
+nav a {
     margin: 0 20px;
     font-size: 2em;
+    /* color: #fff; */
     color: #000;
     text-decoration: none;
     position: relative;
+    display: inline-block;
+    /* background: #2193f3; */
+    letter-spacing: 2px;
+    overflow: hidden;
+    cursor: pointer;
+    /* transition: 0.5s; */
 }
 
-nav #marker{
+nav a:hover {
+    transform: scale(1.1);
+    background: darkgoldenrod;
+    /* box-shadow: 0 0 0 8px #fff,
+        0 0 0 12px darkorange; */
+    /* background: #ff3f81; */
+}
+
+nav #marker {
     position: absolute;
     left: 0;
     height: 4px;
     width: 0;
-    background:red;
+    background: red;
     bottom: -8px;
     transition: 0.5s;
     border-radius: 4px;
