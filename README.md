@@ -11,4 +11,5 @@ My experiments in learning of HTML, CSS and JavaScript by imitating some of the 
 | 5    | Moving Car                  | Create a moving car animation with City background.          |
 | 6    | Sliding Menu                | Underline clicked Menu in Navigation along with scaling.     |
 | 7    | Hover Glowing effect        | Glowing effect on borders on Hover.                          |
+| 8    | Responsive Home Page        | Responsive Home page with Bootstrap, CSS and Animation Effects.                          |
 

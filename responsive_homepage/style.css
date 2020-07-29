@@ -1,0 +1,115 @@
+body {
+    font-family: popins;
+}
+
+header .carousel-inner .carousel-item {
+    height: 100vh;
+}
+
+header .carousel-inner .carousel-item img {
+    position: absolute;
+    object-fit:cover;
+    top: 0;
+    left: 0;
+    min-height: 100vh;
+}
+
+.navbar-inverse {
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.navbar-inverse .navbar-brand {
+    color: #fff;
+    font-size: 40px;
+    padding: 20px 15px;
+    font-weight: 900;
+}
+
+nav .navbar-nav .navbar-right {
+    margin: 25px 15px;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.navbar-nav .nav-link{
+ font-size: 20px;
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,102,203, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+  }
+
+.navbar-toggler{
+    border-color: rgb(255,102,203);
+}
+
+.carousel-caption {
+    padding-bottom: 250px;
+    font-family: poppins;
+}
+
+.carousel-caption h2 {
+    font-size: 70px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.carousel-caption h2 span {
+    color: #edbb00;
+}
+
+.carousel-caption a {
+    background: #edbb00;
+    padding: 15px 35px;
+    display: inline-block;
+    margin-top: 15px;
+    color: #fff;
+    text-transform: uppercase;
+    border-radius: 25px;
+}
+
+/* .carousel-control-prev {
+    background: none;
+}
+
+.carousel-control-next {
+    background: none;
+} */
+
+.carousel-indicators .active {
+    background-color: #edbb00;
+    /* border-color: #edbb00; */
+
+}
+
+@media only screen and (min-width:768px) and (max-width:991px) {
+    .carousel-caption {
+        padding-bottom: 350px;
+    }
+    .carousel-caption h2 {
+        font-size: 50px;
+    }
+}
+
+@media only screen and (max-width:768px) {
+    .navbar-inverse .navbar-brand {
+        font-size: 30px;
+        padding: 20px 15px;
+    }
+
+    .navbar-collapse {
+        background: rgba(0, 0, 0, 0.5);
+    }
+
+    .carousel-caption {
+        padding-bottom: 120px;
+    }
+
+    .carousel-caption h2 {
+        font-size: 25px;
+    }
+}
