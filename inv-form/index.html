@@ -1,12 +1,16 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <base target="_top">
     <title>Inventory Transaction Page</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <!-- <link rel="stylesheet" href="style.css"> -->
+
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="style.css">
     <style>
         * {
             margin: 0;
@@ -16,22 +20,22 @@
 
         body {
             display: flex;
-            justify-content: "center";
-            align-items: "center";
+            /* justify-content: "center"; */
+            /* align-items: "center"; */
             min-height: 100vh;
-            background: #f8f8f8;
+            background: #e8f5e9;
         }
 
-        body .body-container {
-            margin: 30px;
+        .input-field label {
+            color: #00acc1;
         }
     </style>
 </head>
 
 <body>
-    <div class="container body-container">
-        <div class="row justify-content-center mt-3 page-title-icon">
-            <div class="action-icon">
+    <div id="sales-trx-entry" class="container">
+        <div class="row">
+            <div class="col s2">
                 <svg id="Layer_5" enable-background="new 0 0 64 64" height="100" viewBox="0 0 64 64" width="100"
                     xmlns="http://www.w3.org/2000/svg">
                     <g>
@@ -116,120 +120,121 @@
                         </g>
                     </g>
                 </svg>
-            </div>
-            <h1 class="page-title ml-4 align-self-center">Inventory Transaction Entry Form</h1>
+            </div class="col s3">
+            <h1 class="page-title light-blue lighten-2 align-self-center">Sales Transaction Form</h1>
         </div>
-        <h2 class="row justify-content-center page-title-content my-3">Enter the Transaction Details in the
-            below form.</h2>
-        <form>
-            <div class="form-group row">
-                <label for="invoiceNum" class="col-sm-3 col-form-label">Invoice Number</label>
-                <input type="text" class="form-control col-sm-5" id="invoiceNum">
+        <div>
+            <div class="row">
+                <div class="input-field col s3">
+                    <i class="material-icons prefix">point_of_sale</i>
+                    <input disabled id="invoiceNum" type="text" class="validate">
+                    <label for="invoiceNum">Invoice Number</label>
+                </div>
             </div>
-            <div class="form-group row">
-                <label for="custEmail" class="col-sm-3 col-form-label">Customer email</label>
-                <input type="email" class="form-control col-sm-5" id="custEmail" aria-describedby="customerEmailHelp">
-                <small id="customerEmailHelp" class="form-text text-muted col-sm-4">Enter the email id, We'll never
-                    share your email with anyone else.</small>
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">email</i>
+                    <input id="custEmail" type="email" class="validate">
+                    <label for="custEmail">Email</label>
+                    <span class="helper-text" data-error="wrong" data-success="right">Enter the email id, We'll never
+                        share your email with anyone else.</span>
+                </div>
             </div>
-            <div class="form-group row inventory-form">
-                <label for="trxDate" class="col-sm-3 col-form-label">Transaction Date</label>
-                <input type="date" class="form-control col-sm-3" id="trxDate">
+            <div class="row">
+                <div class="input-field col s3">
+                    <i class="material-icons prefix">calendar_view_day</i>
+                    <input type="date" class="validate" id="trxDate">
+                    <label for="trxDate">Transaction Date</label>
+                </div>
+                <div class="input-field col s3 offset-s1">
+                    <i class="material-icons prefix">receipt_long</i>
+                    <input type="text" class="autocomplete" id="productCode">
+                    <label for="productCode">Product Number</label>
+                </div>
             </div>
-            <div class="form-group row">
-                <label for="productCode" class="col-sm-3 col-form-label">Product Code</label>
-                <select class="form-control col-sm-3" id="productCode"></select>
+            <div class="row">
+                <div class="input-field col s3">
+                    <i class="material-icons prefix">contact_phone</i>
+                    <input type="text" id="custMobile">
+                    <label for="custMobile">Customer Mobile</label>
+                </div>
+                <div class="input-field col s5 offset-s1">
+                    <i class="material-icons prefix">account_circle</i>
+                    <input type="text" class="validate" id="custName">
+                    <label for="custName">Customer Name</label>
+                </div>
             </div>
-            <div class="form-group row">
-                <label for="custName" class="text-capitalize col-sm-3 col-form-label">Customer Name</label>
-                <input type="text" class="form-control col-sm-5" id="custName">
+            <div class="row">
+                <div class="input-field col s3">
+                    <i class="material-icons prefix">attach_money</i>
+                    <input type="text" class="validate" id="unitPrice" placeholder="120.6">
+                    <label for="unitPrice">Unit Price</label>
+                </div>
+                <div class="input-field col s3">
+                    <i class="material-icons prefix">add_shopping_cart</i>
+                    <input type="text" class="validate" id="qty" placeholder="12">
+                    <label for="qty">Quantity</label>
+                </div>
+                <div class="input-field col s3">
+                    <i class="material-icons prefix">attach_money</i>
+                    <input type="text" class="validate" id="totalPrice" placeholder="1205.6">
+                    <label for="totalPrice">Total Price</label> </div>
             </div>
-            <div class="form-group row">
-                <label for="custMobile" class="text-capitalize col-sm-3 col-form-label">Customer Mobile</label>
-                <input type="text" class="form-control col-sm-5" id="custMobile">
+            <div class="row">
+                <div class="col s2 offset-s3">
+                    <button id="saveBtn" class="waves-effect waves-light btn green darken-2"><i
+                            class="material-icons right">send</i>Save
+                        Data</button>
+                </div>
+                <div class="col s2">
+                    <button id="cancelBtn" class="waves-effect waves-light btn brown darken-3"><i
+                            class="material-icons right">clear</i>Cancel</button>
+                </div>
             </div>
-            <div class="form-group row">
-                <label for="unitPrice" class="text-capitalize col-sm-3 col-form-label">Unit Price</label>
-                <input type="text" class="form-control col-sm-5" id="unitPrice" placeholder="120.6">
-            </div>
-            <div class="form-group row">
-                <label for="qty" class="text-capitalize col-sm-3 col-form-label">Quantity</label>
-                <input type="text" class="form-control col-sm-5" id="qty" placeholder="12">
-            </div>
-            <div class="form-group row">
-                <label for="totalPrice" class="text-capitalize col-sm-3 col-form-label">Total Price</label>
-                <input type="text" class="form-control col-sm-5" id="totalPrice" placeholder="1205.6">
-            </div>
-            <div class="row d-flex justify-content-center pb-5">
-                <button id="saveBtn" type="submit" class="btn btn-success mr-5">Save Data</button>
-                <button id="cancelBtn" class="btn btn-primary">Cancel</button>
-            </div>
-        </form>
+
+        </div>
     </div>
-
+    <!--JavaScript at end of body for optimized loading-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script type="text/javascript">
-        // Prevent forms from submitting.
-        function preventFormSubmit() {
-            var forms = document.querySelectorAll('form');
-            for (var i = 0; i < forms.length; i++) {
-                forms[i].addEventListener('submit', function (event) {
-                    event.preventDefault();
-                });
-            }
-        }
-        window.addEventListener('load', preventFormSubmit);
-
-        function handleFormSubmit(formObject) {
-            google.script.run.withSuccessHandler(updateUrl).processForm(formObject);
-        }
-
-        function updateUrl(url) {
-            var div = document.getElementById('output');
-            div.innerHTML = '<a href="' + url + '">Got it!</a>';
-        }
-
         // Associate function with click
-        console.info('Assigning function');
-        document.getElementById('saveBtn').addEvXentListener("click", saveData);
+        console.log('Assigning function');
+        document.getElementById('saveBtn').addEventListener("click", saveSalesTrxData);
 
+        function saveSalesTrxData() {
+            var formData = {};
+            formData.custEmail = document.getElementById('custEmail').value;
+            formData.trxDate = document.getElementById('trxDate').value;
+            formData.productCode = document.getElementById('productCode').value;
+            formData.custName = document.getElementById('custName').value;
+            formData.custMobile = document.getElementById('custMobile').value;
+            formData.unitPrice = document.getElementById('unitPrice').value;
+            formData.qty = document.getElementById('qty').value;
+            formData.totalPrice = document.getElementById('totalPrice').value;
+            console.log('Calling appscript function ' + formData.custEmail);
+            // google.script.run.saveSalesTrx(formData);
+            M.toast({ html: 'Data entered successfully!', displayLength: 2000, classes: 'rounded' })
+            resetSalesTrxValues();
+        };
 
-        document.getElementById('btn').addEventListener("click", doStuff);
-        function doStuff() {
-            console.log('Doing stuff...');
-            google.script.run.userClicked("amit")
+        // Reset the values
+        function resetSalesTrxValues() {
+            console.log('Resetting values');
+            document.getElementById('custEmail').value = "";
+            document.getElementById('trxDate').value = "";
+            document.getElementById('productCode').value = "";
+            document.getElementById('custName').value = "";
+            document.getElementById('custMobile').value = "";
+            document.getElementById('unitPrice').value = "0";
+            document.getElementById('qty').value = "0";
+            document.getElementById('totalPrice').value = "0.0";
         }
 
-        function saveData() {
-            var custEmail = document.getElementById('custEmail');
-            var trxDate = document.getElementById('trxDate');
-            var productCode = document.getElementById('productCode');
-            var custName = document.getElementById('custName');
-            var custMobile = document.getElementById('custMobile');
-            var unitPrice = document.getElementById('unitPrice');
-            var qty = document.getElementById('qty');
-            var totalPrice = document.getElementById('totalPrice');
-            Logger.log("Calling appscript function");
-            console.info('Calling appscript function');
-            google.script.run.withSuccessHandler(saveData).saveTransaction(custEmail, trxDate, productCode, custName, custMobile, unitPrice, qty, totalPrice);
-        };
-
-        function cancel() {
+        function cancelSalesTrx() {
             console.info('Cancelling ...');
-            Logger.log("Cancelling ...");
-            google.script.run.cancelTransaction();
+            resetSalesTrxValues();
         };
-
-
     </script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
-        crossorigin="anonymous"></script>
 </body>
 
 </html>
