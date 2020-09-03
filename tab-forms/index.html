@@ -341,6 +341,18 @@
             </div>
             <div class="row">
                 <div class="input-field col s5">
+                    <i class="material-icons prefix">attach_money</i>
+                    <input type="text" class="validate" id="supplierBankAccount">
+                    <label for="supplierBankAccount">Bank Account</label>
+                </div>
+                <div class="input-field col s5 offset-s1">
+                    <i class="material-icons prefix">attach_money</i>
+                    <input type="text" class="validate" id="supplierBankIFSC">
+                    <label for="supplierBankIFSC">Bank IFSC Code</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s5">
                     <i class="material-icons prefix">contact_mail</i>
                     <input id="supplierPrimaryEmail" type="email" class="validate">
                     <label for="supplierPrimaryEmail">Primary Email</label>
@@ -357,12 +369,12 @@
                 <div class="input-field col s3">
                     <i class="material-icons prefix">contact_phone</i>
                     <input type="text" id="supplierCellPrimary" maxlength="10">
-                    <label for="supplierCellPrimary">Mobile Primary</label>
+                    <label for="supplierCellPrimary">Primary Mobile</label>
                 </div>
                 <div class="input-field col s3 offset-s3">
                     <i class="material-icons prefix">local_phone</i>
                     <input type="text" class="validate" id="supplierCellSecondary" maxlength="10">
-                    <label for="supplierCellSecondary">Mobile Secondary</label>
+                    <label for="supplierCellSecondary">Secondary Mobile</label>
                 </div>
             </div>
             <div class="row">
@@ -788,14 +800,13 @@
             return value.match(/^\d+/);
         }
 
-        document.getElementById('salesSaveBtn').addEventListener("click", saveSalesTrxData);
         // Initialize values
         console.log('Assigning Initial values');
         const today = moment();
         let dateValue = today.format('YYYY-MM-DD');
         console.log(dateValue);
-        document.getElementById("purchaseTrxDate").value = dateValue;
-        document.getElementById("salesTrxDate").value = dateValue;
+        // document.getElementById("purchaseTrxDate").value = dateValue;
+        // document.getElementById("salesTrxDate").value = dateValue;
         document.getElementById("supplierTrxDate").value = dateValue;
         document.getElementById("customerTrxDate").value = dateValue;
 
@@ -807,8 +818,32 @@
             custSearchInfo.id = document.getElementById("customerId").value;
             custSearchInfo.phone = document.getElementById("customerCellPrimary").value;
             custSearchInfo.email = document.getElementById("customerPrimaryEmail").value;
-            console.log("Searching customer");
-            google.script.run.withSuccessHandler(getSalesTrxInvNum).getSalesInvNum();
+            if (custSearchInfo.id || custSearchInfo.phone || custSearchInfo.email) {
+                console.log("Searching customer");
+                google.script.run.withSuccessHandler(showCustomerSrchData).searchCustomer(custSearchInfo);
+            } else {
+                M.toast({html: 'Customer Id, Primary Phone or Primary Email can not be null for Search.'});
+            }
+        }
+
+        function showCustomerSrchData(custSearchInfo){
+            console.log(custSearchInfo);
+            if (custSearchInfo.status === "SUCCESS") {
+                let data = custSearchInfo.custData;
+                document.getElementById('customerId').value = data[0];
+                document.getElementById('customerFirstName').value = data[1];
+                document.getElementById('customerLastName').value = data[2];
+                document.getElementById('customerCellPrimary').value = data[3];
+                document.getElementById('customerCellSecondary').value = data[4];
+                document.getElementById('customerPrimaryEmail').value = data[5];
+                document.getElementById('customerSecondaryEmail').value = data[6];
+                document.getElementById('customerStreet').value = data[7];
+                document.getElementById('customerArea').value = data[8];
+                document.getElementById('customerCity').value = data[9];
+                document.getElementById('customerState').value = data[10];
+            } else {
+                M.toast({html: 'Customer not Found.'});
+            }
         }
 
         function saveCustomerData() {
@@ -827,7 +862,7 @@
             customerInfo.state = document.getElementById("customerState").value;
             customerInfo.country = document.getElementById("customerCountry").value;
             console.log("Searching customer");
-            google.script.run.withSuccessHandler(saveCustomerData).saveCustomer();
+            google.script.run.saveCustomer(customerInfo);
         }
 
         // Reset the values
@@ -847,14 +882,40 @@
         // Supplier Form functions
         // -------------------------------------------------------------------------------------
         function searchSupplierData() {
-            let custSearchInfo = {};
-            custSearchInfo.id = document.getElementById("supplierId").value;
-            custSearchInfo.phone = document.getElementById("supplierCellPrimary").value;
-            custSearchInfo.email = document.getElementById("supplierPrimaryEmail").value;
-            console.log("Searching customer");
-            google.script.run.withSuccessHandler(searchSupplier).searchSupplier();
+            let suppSearchInfo = {};
+            suppSearchInfo.id = document.getElementById("supplierId").value;
+            suppSearchInfo.phone = document.getElementById("supplierCellPrimary").value;
+            suppSearchInfo.email = document.getElementById("supplierPrimaryEmail").value;
+            suppSearchInfo.bankAccount = document.getElementById("supplierBankAccount").value;
+            if (suppSearchInfo.id || suppSearchInfo.phone || suppSearchInfo.email) {
+                console.log("Searching supplier");
+                google.script.run.withSuccessHandler(showSupplierSrchData).searchSupplier(suppSearchInfo);
+            } else {
+                M.toast({html: 'SupplierId, BankAccount, Primary Phone or Primary Email can not be null for Search.'});
+            }
         }
 
+        function showSupplierSrchData(suppSearchInfo){
+            console.log(suppSearchInfo);
+            if (suppSearchInfo.status === "SUCCESS") {
+                let data = suppSearchInfo.suppData;
+                document.getElementById('supplierId').value = data[0];
+                document.getElementById('supplierFirstName').value = data[1];
+                document.getElementById('supplierLastName').value = data[2];
+                document.getElementById('supplierCellPrimary').value = data[3];
+                document.getElementById('supplierCellSecondary').value = data[4];
+                document.getElementById('supplierPrimaryEmail').value = data[5];
+                document.getElementById('supplierSecondaryEmail').value = data[6];
+                document.getElementById('supplierBankAccount').value = data[7];
+                document.getElementById('supplierBankIFSC').value = data[8];
+                document.getElementById('supplierStreet').value = data[9];
+                document.getElementById('supplierArea').value = data[10];
+                document.getElementById('supplierCity').value = data[11];
+                document.getElementById('supplierState').value = data[12];
+            } else {
+                M.toast({html: 'Supplier not Found.'});
+            }
+        }
         function saveSupplierData() {
             let supplierInfo = {};
             supplierInfo.customerId = document.getElementById("supplierId").value;
@@ -883,6 +944,9 @@
             document.getElementById('supplierCellPrimary').value = "";
             document.getElementById('supplierCellSecondary').value = "";
             document.getElementById('supplierPrimaryEmail').value = "";
+            document.getElementById('supplierSecondaryEmail').value = "";
+            document.getElementById('supplierBankAccount').value = "";
+            document.getElementById('supplierBankIFSC').value = "";
             document.getElementById('supplierSecondaryEmail').value = "";
             document.getElementById('supplierStreet').value = "";
             document.getElementById('supplierArea').value = "";
