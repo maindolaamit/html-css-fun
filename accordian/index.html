@@ -1,0 +1,48 @@
+<html>
+
+<head>
+    <title>Accordian</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="accordian">
+        <div class="contentBox">
+            <div class="label">List 1</div>
+            <div class="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam quis non adipisci ex
+                accusamus recusandae distinctio mollitia magnam, voluptates numquam sed quos temporibus veritatis nam
+                repudiandae, culpa quaerat alias iusto.</div>
+        </div>
+        <div class="contentBox">
+            <div class="label">List 2</div>
+            <div class="content">Lorem</div>
+        </div>
+        <div class="contentBox">
+            <div class="label">List 3</div>
+            <div class="content">Lorem</div>
+        </div>
+        <div class="contentBox">
+            <div class="label">List 4</div>
+            <div class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus ad facere est velit
+                natus. Eligendi iure animi eum nesciunt odio blanditiis, quia beatae voluptas voluptatibus maiores,
+                similique veniam expedita rem.</div>
+        </div>
+        <div class="contentBox">
+            <div class="label">List 5</div>
+            <div class="content">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nobis quibusdam architecto
+                ipsam, doloremque, non ea vel delectus inventore magni totam harum incidunt eaque quidem odit porro,
+                esse minus laborum sit.</div>
+        </div>
+    </div>
+
+    <script>
+        const boxes = document.getElementsByClassName('contentBox');
+        for (i = 0; i < boxes.length; i++) {
+            boxes[i].addEventListener('click', function () {
+                this.classList.toggle('active')
+            })
+        }        
+    </script>
+</body>
+
+</html>
