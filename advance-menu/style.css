@@ -1,0 +1,132 @@
+body {
+    background-color:#353b48;
+}
+
+body,
+button,
+input,
+select,
+textarea {
+	color: #f5f6fa;
+	font-family: 'Asap', sans-serif;
+	font-size: 18px;
+	line-height: 1.5;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	clear: both;
+}
+
+.masthead {
+    background: #2f3640;
+}
+
+
+.centered {
+    margin: 0 auto;
+    padding: 0 1em;
+}
+
+@media screen and (min-width: 52em) {
+    .centered {
+        max-width: 52em;
+    }
+}
+
+.site-title {
+    color: #f5f6fa;
+    text-decoration: none;
+    font-size: 4em;
+}
+
+.site-title a:hover {
+    text-decoration: underline;
+}
+
+.menu-section {
+    padding-bottom: 2em;
+    margin-bottom: 2em;
+}
+
+.menu ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    background-color: #dcdde1;
+}
+
+.menu li a {
+    text-decoration: none;
+    color: #353b48;
+    padding: 0.6em 1em;
+    display: block;
+    transition: all .5s ease;
+}
+
+.menu li a:hover {
+	background-color: #f5f6fa;
+}
+
+.menu-heading {
+	font-size: 2em;
+	font-weight: normal;
+}
+
+@media screen and (min-width: 600px) 
+{
+    .single-nav ul {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        text-align: center;
+    }
+    
+    .single-nav ul li {
+        flex-grow: 1;
+        flex-basis: auto;
+        flex-shrink: 0;
+    }    
+}
+
+
+
+@media screen and (min-width: 600px) 
+{
+   .advanced-nav ul {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .advanced-nav ul li{
+        flex-grow: 1;
+        flex-shrink: 0;
+        flex-basis: 220px
+    }
+
+    .advanced-nav ul li a {
+        display: flex;
+    }
+
+    .advanced-nav ul li a .icon{
+        flex-basis: 60px;
+        font-size: 35px;
+    }
+
+    .advanced-nav ul li a .text {
+        font-size: 25px;
+        font-weight: bold;
+    }
+
+    .advanced-nav ul li a .text span{
+        display: block;
+        font-size: 15px;
+        font-weight: lighter;
+        font-style: italic;
+    }
+}
+
